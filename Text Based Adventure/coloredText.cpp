@@ -1,3 +1,4 @@
+#include <windows.h> 
 #include "coloredText.h"
 #include "debugLog.h"
 
@@ -99,6 +100,7 @@ void color(std::string input, std::string color)
         textColor = saved_attributes;
     }
 
+    // if color is set
     if (textColor != -101)
     {
         SetConsoleTextAttribute(hConsole, textColor);

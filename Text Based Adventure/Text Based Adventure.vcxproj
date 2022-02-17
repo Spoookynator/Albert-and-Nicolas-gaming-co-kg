@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="coloredText.cpp" />
     <ClCompile Include="dialogue.cpp" />
+    <ClCompile Include="inventory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="endingPoints.cpp" />
     <ClCompile Include="objects.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="debugLog.h" />
     <ClInclude Include="dialogue.h" />
     <ClInclude Include="endingPoints.h" />
+    <ClInclude Include="inventory.h" />
     <ClInclude Include="objects.h" />
     <ClInclude Include="save.h" />
     <ClInclude Include="userInput.h" />

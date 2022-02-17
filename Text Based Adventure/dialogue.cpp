@@ -1,5 +1,5 @@
-#include "dialogue.h"
 #include <iostream>
+#include "dialogue.h"
 #include "coloredText.h"
 
 void narration(std::string input)

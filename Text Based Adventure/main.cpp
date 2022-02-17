@@ -5,6 +5,7 @@
 #include "userInput.h"
 #include "save.h"
 #include "objects.h"
+#include "inventory.h"
 
 int main()
 {
@@ -20,9 +21,13 @@ int main()
     std::cout << userChoiceNumbered(2);
     newLine();
 
+    editInventory(inventory, "gamer", "add");
+
+    inventoryCheckFor(inventory, "gamer");
+    inventoryCheckFor(inventory, "apple");
+
     output("Points: "); color(pointsReturn(), "red"); newLine();
 
-    Object tree("schmamer", "schmamer", "schmamer", "schmamer", "schmamer");
-
+    Object tree("tree", "Just a normal tree", "cant do anything");
     return 0;
 }

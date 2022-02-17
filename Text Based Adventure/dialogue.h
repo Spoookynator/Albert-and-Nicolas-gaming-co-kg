@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include "coloredText.h"
 
 void narration(std::string);
 

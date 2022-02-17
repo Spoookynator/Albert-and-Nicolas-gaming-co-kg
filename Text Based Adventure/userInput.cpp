@@ -1,9 +1,11 @@
-#include "userInput.h"
 #include <iostream>
 #include <string>
+#include "userInput.h"
 #include "coloredText.h"
 #include "save.h"
 
+
+// use for story progression choices
 int userChoiceNumbered(int options)
 {
 	int input;
