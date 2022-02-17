@@ -22,7 +22,7 @@ int main()
 
     output("Points: "); color(pointsReturn(), "red"); newLine();
 
-    Object tree("schmamer", "schmamer", "schmamer", "schmamer", "schmamer");
+    Object tree("Tree", "schmamer", "schmamer", "schmamer", "schmamer");
 
     return 0;
 }
