@@ -8,7 +8,7 @@
 // editInventory options: (inventory to change, item name, "add" or "remove")
 std::vector<std::string> inventory; 
 
-void editInventory(std::vector<std::string>& inventory, std::string name, std::string option)
+void editInventory(std::string name, std::string option)
 {
 	if (option == "add")
 	{
@@ -53,40 +53,8 @@ void outputInventory(std::vector<std::string>& vector)
 	std::cout << "\n";
 }
 
-void saveOrLoadInventory(std::vector<std::string>& inventory, std::string option)
-{
 
-	if (option == "save")
-	{
-		std::ofstream SaveFile;
-		SaveFile.open("saveFile.txt");
-
-		for (int i = 0; i < inventory.size(); i++)
-		{
-			SaveFile << inventory.at(i);
-			if (i < inventory.size())
-			{
-				SaveFile << "\n";
-			}
-		}
-		SaveFile.close();
-	}
-	else if (option == "load")
-	{
-		std::fstream LoadFile;
-		LoadFile.open("saveFile.txt");
-
-		inventory.clear();
-		std::string line;
-		while (std::getline(LoadFile, line))
-		{
-			editInventory(inventory, line, "add");
-		}
-		LoadFile.close();
-	}
-}
-
-bool inventoryCheckFor(std::vector<std::string>& inventory, std::string name)
+bool inventoryCheckFor(std::string name)
 {
 	// checks if item name == inventory name for every slot. When its the same, then true
 	for (int i = 0; i < inventory.size(); i++)
