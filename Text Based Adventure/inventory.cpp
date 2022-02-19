@@ -8,33 +8,31 @@
 // editInventory options: (inventory to change, item name, "add" or "remove")
 std::vector<std::string> inventory; 
 
-void editInventory(std::string name, std::string option)
-{
-	if (option == "add")
-	{
-		inventory.push_back(name);
-	}
-	else if (option == "remove")
-	{
-		// checks if item name == inventory name for every slot. When its the same, delete the entry.
-		for (int i = 0; i < inventory.size(); i++)
-		{
-			if (name == inventory.at(i))
-			{
-				inventory.erase(inventory.begin() + i);
-				break;
-			}
-			// if item to be deleted not found
-			if (i == inventory.size() - 1)
-			{
-				LOG("No \"" + name + "\" in Inventory.\n");
-			}
-		}
-	}
 
+void addToInventory(std::string name)
+{
+	inventory.push_back(name);
 }
 
-void outputInventory(std::vector<std::string>& vector)
+void removeFromInventory(std::string name)
+{
+	// checks if item name == inventory name for every slot. When its the same, delete the entry.
+	for (int i = 0; i < inventory.size(); i++)
+	{
+		if (name == inventory.at(i))
+		{
+			inventory.erase(inventory.begin() + i);
+			break;
+		}
+		// if item to be deleted not found
+		if (i == inventory.size() - 1)
+		{
+			LOG("No \"" + name + "\" in Inventory.\n");
+		}
+	}
+}
+
+void outputInventory(std::vector<std::string>&vector)
 {
 	std::cout << "Inventory contains: ";
 	for (int i = 0; i < vector.size(); i++)
