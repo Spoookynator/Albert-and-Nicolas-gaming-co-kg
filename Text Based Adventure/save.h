@@ -2,10 +2,12 @@
 #include <vector>
 
 extern std::vector<int> savedUserChoicesNumbered;
+
 extern const std::string INVENTORY;
 extern const std::string CHOICES;
 extern const std::string FILENAME;
 extern std::fstream saveFile;
+
 
 void SAVE();
 

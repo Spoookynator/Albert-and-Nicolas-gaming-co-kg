@@ -2,7 +2,7 @@
 #include "objects.h"
 #include "debugLog.h"
 
-Object::Object(std::string name, std::string description, std::string interaction, std::string secret, std::string secretMessage)
+Object::Object(std::string name, std::string description, bool aquirable, int scene, std::string interaction, std::string secret, std::string secretMessage)
 {
 	this->name = name;
 	this->description = description;

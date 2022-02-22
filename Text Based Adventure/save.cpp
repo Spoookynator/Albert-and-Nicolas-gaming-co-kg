@@ -6,19 +6,46 @@
 #include "save.h"
 #include "inventory.h"
 #include "debugLog.h"
+#include "coloredText.h"
 
 
 std::vector<int> savedUserChoicesNumbered = {};
 
 const std::string INVENTORY = "%";
 const std::string CHOICES = "&";
-const std::string FILENAME = "saveFile.txt";
+const std::string FILENAME = "saveFile.dat";
 
 
 
 void LOAD()
 {
 	const std::string FILE_STRING = openFile();
+	if (FILE_STRING == "Error")
+	{
+		char temp;
+		color("Unable to open Save File! It might not exist, or be renamed! Do you want to save now? Y/N\n", "dred");
+		std::cin >> temp;
+
+		while (std::cin.fail() || (!(temp == 'y') && !(temp == 'Y') && !(temp == 'n') && !(temp == 'N')))
+		{
+			color("Error: Illegal character\n", "dred");
+			std::cin.clear();
+			std::cin.ignore(256, '\n');
+			std::cin >> temp;
+		}
+		switch (temp)
+		{
+		case 'y':
+			SAVE();
+			break;
+		case 'Y':
+			SAVE();
+			break;
+		default:
+			color("Gamedata not saved!\n", "dred");
+			break;
+		}
+	}
 	loadInventory(FILE_STRING);
 	loadChoices(FILE_STRING);
 
@@ -74,8 +101,8 @@ std::string openFile()
 		loadFile.close();
 	}
 
-	// when file cant be opened
-	else std::cout << "Unable to open file" + FILENAME;
+	// when file cant be opened;
+	return "Error";
 }
 
 void loadInventory(std::string fileString)
