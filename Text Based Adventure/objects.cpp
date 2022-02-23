@@ -1,6 +1,8 @@
 #include <iostream>
+#include <vector>
 #include "objects.h"
 #include "debugLog.h"
+
 
 Object::Object(std::string name, std::string description, bool aquirable, int scene, std::string interaction, std::string secret, std::string secretMessage)
 {
@@ -25,12 +27,12 @@ std::string Object::getName()
 
 std::string Object::getDescription()
 {
-	return description;
+	return description + "\n";
 }
 
 std::string Object::getInteraction()
 {
-	return interaction;
+	return interaction + "\n";
 }
 std::string Object::getSecret()
 {
@@ -38,5 +40,30 @@ std::string Object::getSecret()
 }
 std::string Object::getSecretMessage()
 {
-	return secretMessage;
+	return secretMessage + "\n";
+}
+
+Keyword::Keyword(bool found, std::vector<std::string> keywords)
+{
+	this->keywords = keywords;
+	this->found = found;
+}
+
+Keyword::~Keyword()
+{
+}
+
+std::vector<std::string> Keyword::getKeywords()
+{
+	return keywords;
+}
+
+bool Keyword::foundWords()
+{
+	return found;
+}
+
+void Keyword::foundWords(bool foundWord)
+{
+	found = foundWord;
 }

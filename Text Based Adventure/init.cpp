@@ -5,8 +5,8 @@
 short int Scene = 0;
 
 // scene 1
-Object tree("Baum", "braun", false, 1, "du berühst ein blatt");
+Object tree("tree", "A normal looking tree", false, 1, "You touch the tree's trunk. It feels nice");
 
-Object rock("Stein", "spitz", true, 1, "du betrachtest den Stein");
+Object rock("rock", "Looks very spiky", true, 1, "You touch the rock. You can feel its rough surface");
 
 //scene 2

@@ -11,6 +11,8 @@ short int currentScene = 0;
 
 int main()
 {
+    currentScene = 1;
+    std::cout << "Let's look around and see if I can find something!" << std::endl;
     userComandInterface();
     return 0;
 }

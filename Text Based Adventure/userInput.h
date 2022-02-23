@@ -6,4 +6,6 @@ int userChoiceNumbered(int options);
 
 void userComandInterface();
 
+void lookFor();
+
 void lookOptions();

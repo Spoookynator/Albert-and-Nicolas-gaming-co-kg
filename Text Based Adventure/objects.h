@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <vector>
 
 class Object
 {
@@ -16,3 +17,18 @@ public:
 private:
 	std::string name, description, secret, secretMessage, interaction;
 };
+
+class Keyword
+{
+public:
+	Keyword(bool found_, std::vector<std::string> keywords = {"empty"});
+	~Keyword();
+	bool foundWords();
+	void foundWords(bool foundWord);
+	std::vector<std::string> getKeywords();
+
+private:
+	bool found;
+	std::vector<std::string> keywords;
+};
+
