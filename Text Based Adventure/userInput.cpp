@@ -7,6 +7,7 @@
 #include "save.h"
 #include "init.h"
 #include "objects.h"
+#include "inventory.h"
 
 
 std::vector<std::string> splitInput;
@@ -36,20 +37,25 @@ int userChoiceNumbered(int options)
 // universal words
 Keyword save(false, { "save", "save,", "save.", "save!", "save?" });
 Keyword load(false, { "load", "load,", "load.", "load!", "load?" });
-Keyword look(false, { "look", "look,", "look.", "look!", "look?" });
-Keyword interact(false, { "interact", "interact,","interact.", "interact!", "interact?" });
+Keyword look(false, { "look", "look,", "look.", "look!", "look?", "inspect", "inspect,", "inspect.", "inspect!", "inspect?", "examine", "examine,", "examine.", "examine!", "examine?" });
+Keyword interact(false, { "interact", "interact,","interact.", "interact!", "interact?", "touch", "touch,","touch.", "touch!", "touch?", "interact", "interact,","interact.", "interact!", "interact?" });
 Keyword pickUp(false, { "take", "take,", "take.", "take!", "take?" });
+Keyword playerInventory(false, { "inventory", "inventory,", "inventory.", "inventory!", "inventory?",  "backpack", "backpack,", "backpack.", "backpack!", "backpack?", "bag", "bag,", "bag.", "bag!", "bag?" });
 
 // specific words or objects
 Keyword k_tree(false, { "tree", "tree,", "tree.", "tree!", "tree?" });
 Keyword k_rock(false, { "rock", "rock,", "rock.", "rock!", "rock?" });
+Keyword k_stick(false, { "stick", "stick,", "stick.", "stick!", "stick?" });
+Keyword k_leaf(false, { "leaf", "leaf,", "leaf.", "leaf!", "leaf?" });
+
 
 void userComandInterface()
 {
 	std::string input;
 	splitInput.clear();
-
 	getline(std::cin, input);
+
+	std::cin.clear();
 
 	// input validation
 	while (std::cin.fail())
@@ -85,6 +91,9 @@ void userComandInterface()
 		}
 	}
 
+	// defaults variables
+	clear();
+
 	// checks input for keywords
 	lookFor();
 
@@ -99,7 +108,15 @@ void userComandInterface()
 	}
 	else if (look.foundWords() == true)
 	{
-		lookOptions();
+		lookOptions(true);
+	}
+	else if (interact.foundWords() == true)
+	{
+		lookOptions(false);
+	}
+	else if (playerInventory.foundWords() == true)
+	{
+		outputInventory();
 	}
 	else {
 		color("I cant do that!\n", "dred");
@@ -134,6 +151,10 @@ void lookFor()
 		{
 			if (instance == words) pickUp.foundWords(true);
 		}
+		for (std::string instance : playerInventory.getKeywords())
+		{
+			if (instance == words) playerInventory.foundWords(true);
+		}
 #pragma endregion
 		// specific words
 
@@ -145,22 +166,63 @@ void lookFor()
 		{
 			if (instance == words) k_rock.foundWords(true);
 		}
+		for (std::string instance : k_stick.getKeywords())
+		{
+			if (instance == words) k_stick.foundWords(true);
+		}
+		for (std::string instance : k_leaf.getKeywords())
+		{
+			if (instance == words) k_leaf.foundWords(true);
+		}
 
 	}
 }
-void lookOptions()
+void lookOptions(bool look)
 {
 	// limits objects to specific scenes (so they cant be accessed before or after)
+
 	if (currentScene == 1)
 	{
-		if (k_tree.foundWords() == true)
+		if (look == true)
 		{
-			std::cout << tree.getDescription();
+			if (k_tree.foundWords() == true)
+			{
+				std::cout << tree.getDescription();
+			}
+			else if (k_rock.foundWords() == true)
+			{
+				std::cout << rock.getDescription();
+			}
+			else if (k_stick.foundWords() == true)
+			{
+				std::cout << stick.getDescription();
+			}
+			else if (k_leaf.foundWords() == true)
+			{
+				std::cout << leaf.getDescription();
+			}
+
 		}
-		else if (k_rock.foundWords() == true)
+		else
 		{
-			std::cout << rock.getDescription();
+			if (k_tree.foundWords() == true)
+			{
+				std::cout << tree.getInteraction();
+			}
+			else if (k_rock.foundWords() == true)
+			{
+				std::cout << rock.getInteraction();
+			}
+			else if (k_stick.foundWords() == true)
+			{
+				std::cout << stick.getInteraction();
+			}
+			else if (k_leaf.foundWords() == true)
+			{
+				std::cout << leaf.getInteraction();
+			}
 		}
+
 	}
 	else if (currentScene == 2)
 	{
@@ -179,4 +241,18 @@ void lookOptions()
 	}
 }
 
+// defaults all variables
+void clear()
+{
+	// universal
+	save.foundWords(false);
+	load.foundWords(false);
+	look.foundWords(false);
+	interact.foundWords(false);
+	pickUp.foundWords(false);
 
+	// specific
+	k_tree.foundWords(false);
+	k_tree.foundWords(false);
+
+}

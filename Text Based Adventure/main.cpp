@@ -13,6 +13,11 @@ int main()
 {
     currentScene = 1;
     std::cout << "Let's look around and see if I can find something!" << std::endl;
-    userComandInterface();
+    while (true)
+    {
+        userComandInterface();
+        addToInventory("apple");
+    }
+
     return 0;
 }

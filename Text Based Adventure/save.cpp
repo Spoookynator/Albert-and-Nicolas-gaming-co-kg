@@ -26,6 +26,10 @@ void LOAD()
 		color("Unable to open Save File! It might not exist, or be renamed! Do you want to save now? Y/N\n", "dred");
 		std::cin >> temp;
 
+		// clear cin since it had problems with implementing in other files
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
 		while (std::cin.fail() || (!(temp == 'y') && !(temp == 'Y') && !(temp == 'n') && !(temp == 'N')))
 		{
 			color("Error: Illegal character\n", "dred");

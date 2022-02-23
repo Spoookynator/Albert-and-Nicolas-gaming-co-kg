@@ -11,6 +11,14 @@ std::vector<std::string> inventory;
 
 void addToInventory(std::string name)
 {
+	for (int i = 0; i < inventory.size(); i++)
+	{
+		if (name == inventory.at(i))
+		{
+			inventory.erase(inventory.begin() + i);
+			break;
+		}
+	}
 	inventory.push_back(name);
 }
 
@@ -32,22 +40,30 @@ void removeFromInventory(std::string name)
 	}
 }
 
-void outputInventory(std::vector<std::string>&vector)
+void outputInventory()
 {
-	std::cout << "Inventory contains: ";
-	for (int i = 0; i < vector.size(); i++)
+	if (inventory.empty() == true)
 	{
-		std::cout << vector.at(i);
-		if (i < vector.size() - 1)
-		{
-			std::cout << ", ";
-		}
-		if (i == vector.size() - 1)
-		{
-			std::cout << ".";
-		}
-
+		std::cout << "Your bag is empty...";
 	}
+	else
+	{
+		std::cout << "You take a look inside your bag and find: ";
+		for (int i = 0; i < inventory.size(); i++)
+		{
+			std::cout << inventory.at(i);
+			if (i < inventory.size() - 1)
+			{
+				std::cout << ", ";
+			}
+			if (i == inventory.size() - 1)
+			{
+				std::cout << ".";
+			}
+
+		}
+	}
+
 	std::cout << "\n";
 }
 

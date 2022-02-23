@@ -8,4 +8,6 @@ void userComandInterface();
 
 void lookFor();
 
-void lookOptions();
+void lookOptions(bool look);
+
+void clear();

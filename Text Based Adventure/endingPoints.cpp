@@ -1,4 +1,4 @@
-#include "endingPoints.h";
+#include "endingPoints.h"
 
 short int endingPoints = 0;
 
