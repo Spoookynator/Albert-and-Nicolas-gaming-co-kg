@@ -10,4 +10,5 @@ void lookFor();
 
 void lookOptions(bool look);
 
+void pickUpItem();
 void clear();

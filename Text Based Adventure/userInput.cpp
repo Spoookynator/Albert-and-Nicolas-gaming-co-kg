@@ -39,14 +39,11 @@ Keyword save(false, { "save", "save,", "save.", "save!", "save?" });
 Keyword load(false, { "load", "load,", "load.", "load!", "load?" });
 Keyword look(false, { "look", "look,", "look.", "look!", "look?", "inspect", "inspect,", "inspect.", "inspect!", "inspect?", "examine", "examine,", "examine.", "examine!", "examine?" });
 Keyword interact(false, { "interact", "interact,","interact.", "interact!", "interact?", "touch", "touch,","touch.", "touch!", "touch?", "interact", "interact,","interact.", "interact!", "interact?" });
-Keyword pickUp(false, { "take", "take,", "take.", "take!", "take?" });
+Keyword pickUp(false, { "take", "take,", "take.", "take!", "take?", "pick", "pick,", "pick.", "pick!", "pick?" });
 Keyword playerInventory(false, { "inventory", "inventory,", "inventory.", "inventory!", "inventory?",  "backpack", "backpack,", "backpack.", "backpack!", "backpack?", "bag", "bag,", "bag.", "bag!", "bag?" });
+Keyword turnOn(false, { "turn", "turn,"});
 
-// specific words or objects
-Keyword k_tree(false, { "tree", "tree,", "tree.", "tree!", "tree?" });
-Keyword k_rock(false, { "rock", "rock,", "rock.", "rock!", "rock?" });
-Keyword k_stick(false, { "stick", "stick,", "stick.", "stick!", "stick?" });
-Keyword k_leaf(false, { "leaf", "leaf,", "leaf.", "leaf!", "leaf?" });
+
 
 
 void userComandInterface()
@@ -114,12 +111,25 @@ void userComandInterface()
 	{
 		lookOptions(false);
 	}
+	else if (turnOn.foundWords() == true)
+	{
+		if (currentScene == TV.getScene() && k_TV.foundWords() == true)
+		{
+			std::cout << tree.getDescription();
+		}
+	}
+	else if (pickUp.foundWords() == true)
+	{
+		pickUpItem();
+
+	}
 	else if (playerInventory.foundWords() == true)
 	{
 		outputInventory();
+		std::cin.clear();
 	}
 	else {
-		color("I cant do that!\n", "dred");
+		color("You cant do that!\n", "dred");
 		userComandInterface();
 	}
 } 
@@ -155,6 +165,10 @@ void lookFor()
 		{
 			if (instance == words) playerInventory.foundWords(true);
 		}
+		for (std::string instance : turnOn.getKeywords())
+		{
+			if (instance == words) turnOn.foundWords(true);
+		}
 #pragma endregion
 		// specific words
 
@@ -180,64 +194,66 @@ void lookFor()
 void lookOptions(bool look)
 {
 	// limits objects to specific scenes (so they cant be accessed before or after)
-
-	if (currentScene == 1)
+	
+	if (look == true)
 	{
-		if (look == true)
+		if (currentScene == tree.getScene() && k_tree.foundWords() == true)
 		{
-			if (k_tree.foundWords() == true)
-			{
-				std::cout << tree.getDescription();
-			}
-			else if (k_rock.foundWords() == true)
-			{
-				std::cout << rock.getDescription();
-			}
-			else if (k_stick.foundWords() == true)
-			{
-				std::cout << stick.getDescription();
-			}
-			else if (k_leaf.foundWords() == true)
-			{
-				std::cout << leaf.getDescription();
-			}
+			std::cout << tree.getDescription();
+		}
+		else if (currentScene == rock.getScene() && k_rock.foundWords() == true)
+		{
+			std::cout << rock.getDescription();
+		}
+		else if (currentScene == stick.getScene() && k_stick.foundWords() == true)
+		{
+			std::cout << stick.getDescription();
+		}
+		else if (currentScene == leaf.getScene() && k_leaf.foundWords() == true)
+		{
+			std::cout << leaf.getDescription();
+		}		
+		// default message when object not found
+		else {
+			color("You dont see a \"" + splitInput.at(2) + "\"!", "dred");
+			std::cout << std::endl;
+			userComandInterface();
+		}
+	}
+	else
+	{
+		if (currentScene == tree.getScene() && k_tree.foundWords() == true)
+		{
+			std::cout << tree.getInteraction();
+		}
+		else if (currentScene == rock.getScene() && k_rock.foundWords() == true)
+		{
+			std::cout << rock.getInteraction();
+		}
+		else if (currentScene == stick.getScene() && k_stick.foundWords() == true)
+		{
+			std::cout << stick.getInteraction();
+		}
+		else if (currentScene == leaf.getScene() && k_leaf.foundWords() == true)
+		{
+			std::cout << leaf.getInteraction();
+		}
+		// default message when object not found
+		else {
+			color("You dont see a \"" + splitInput.at(2) + "\"!", "dred");
+			std::cout << std::endl;
+			userComandInterface();
 
 		}
-		else
-		{
-			if (k_tree.foundWords() == true)
-			{
-				std::cout << tree.getInteraction();
-			}
-			else if (k_rock.foundWords() == true)
-			{
-				std::cout << rock.getInteraction();
-			}
-			else if (k_stick.foundWords() == true)
-			{
-				std::cout << stick.getInteraction();
-			}
-			else if (k_leaf.foundWords() == true)
-			{
-				std::cout << leaf.getInteraction();
-			}
-		}
-
 	}
-	else if (currentScene == 2)
+}
+
+void pickUpItem()
+{
+	if (currentScene == rock.getScene() && k_rock.foundWords() == true && rock.getAquirable() == true)
 	{
-
-	}
-	else if (currentScene == 3)
-	{
-
-	}
-
-	// default message when object not found
-	else {
-		color("I dont see a \"" + splitInput.at(2) + "\"!", "dred");
-		std::cout << std::endl;
-		userComandInterface();
+		addToInventory(rock.getName());
+		rock.setScene(-1);
 	}
 }
 
@@ -250,9 +266,12 @@ void clear()
 	look.foundWords(false);
 	interact.foundWords(false);
 	pickUp.foundWords(false);
+	turnOn.foundWords(false);
 
 	// specific
 	k_tree.foundWords(false);
-	k_tree.foundWords(false);
-
+	k_rock.foundWords(false);
+	k_stick.foundWords(false);
+	k_leaf.foundWords(false);
 }
+

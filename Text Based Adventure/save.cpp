@@ -55,10 +55,10 @@ void LOAD()
 
 
 	for (const auto& str : inventory) {
-		LOG(str);
+		LOG("Loaded: " + str);
 	}
 	for (const auto& str : savedUserChoicesNumbered) {
-		LOG(str);
+		LOG("Saved: " + str);
 	}
 }
 
