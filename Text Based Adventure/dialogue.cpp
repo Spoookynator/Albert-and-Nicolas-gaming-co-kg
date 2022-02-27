@@ -1,4 +1,6 @@
 #include <iostream>
+#include <chrono>
+#include <windows.h>
 #include "dialogue.h"
 #include "coloredText.h"
 
@@ -6,6 +8,7 @@ void narration(std::string input)
 {
 	color("|" + input, "grey");
 	std::cout << std::endl;
+	Sleep(1000);
 }
 	
 
@@ -22,7 +25,13 @@ void output(std::string text)
 	std::cout << text;
 }
 
-void newLine()
+void newLine(int sleep)
 {
 	std::cout << std::endl;
+	Sleep(sleep);
+}
+
+void s()
+{
+	Sleep(1500);
 }

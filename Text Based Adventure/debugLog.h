@@ -3,7 +3,7 @@
 
 // This activates debug log mode
 // Comment out for release!
-// #define DEBUG
+#define DEBUG
 
 
 #ifdef DEBUG

@@ -7,4 +7,6 @@ void dialogue(std::string name, std::string text, std::string nameColor = "defau
 
 void output(std::string text);
 
-void newLine();
+void newLine(int sleep = 1500);
+
+void s();

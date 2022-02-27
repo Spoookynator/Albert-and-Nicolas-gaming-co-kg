@@ -4,7 +4,7 @@
 #include "debugLog.h"
 
 
-Object::Object(int scene, std::string name, std::string description, bool aquirable, std::string interaction, std::string secret, std::string secretMessage)
+Object::Object(int scene, std::string name, std::string description, bool aquirable, std::string interaction, std::string secret, std::string secretMessage, bool interacted)
 {
 	this->scene = scene;
 	this->name = name;
@@ -13,6 +13,7 @@ Object::Object(int scene, std::string name, std::string description, bool aquira
 	this->aquirable = aquirable;
 	this->secret = secret;
 	this->secretMessage = secretMessage;
+	this->interacted = interacted;
 
 	LOG("Object: \"" + name + "\" created!");
 }
@@ -26,9 +27,17 @@ int Object::getScene()
 {
 	return scene;
 }
+bool Object::getInteracted()
+{
+	return interacted;
+}
 std::string Object::getName()
 {
 	return name;
+}
+void Object::setInteracted(bool interacted)
+{
+	this->interacted = interacted;
 }
 std::string Object::getDescription()
 {

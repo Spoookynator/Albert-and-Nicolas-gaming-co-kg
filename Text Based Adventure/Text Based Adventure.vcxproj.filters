@@ -16,6 +16,9 @@
     <Filter Include="MAIN">
       <UniqueIdentifier>{6ce18b6d-b7b7-4de1-a03b-64ba67047915}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Story">
+      <UniqueIdentifier>{2eea54c8-b0ec-4e5c-9825-9d204b3c2a5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="coloredText.cpp">
@@ -42,14 +45,23 @@
     <ClCompile Include="main.cpp">
       <Filter>MAIN</Filter>
     </ClCompile>
-    <ClCompile Include="Story\Endings\ending1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Story\Endings\ending2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="init.cpp">
       <Filter>MAIN</Filter>
+    </ClCompile>
+    <ClCompile Include="Story\Endings\Ending2.cpp">
+      <Filter>Story</Filter>
+    </ClCompile>
+    <ClCompile Include="Story\Endings\Ending1.cpp">
+      <Filter>Story</Filter>
+    </ClCompile>
+    <ClCompile Include="Story\Intro\Intro.cpp">
+      <Filter>Story</Filter>
+    </ClCompile>
+    <ClCompile Include="storyLinker.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="storyLinker.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +90,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="init.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="app.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Story\Intro\Intro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

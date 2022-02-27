@@ -17,4 +17,8 @@ void loadInventory(std::string fileString);
 
 void loadChoices(std::string fileString);
 
-std::string openFile();
+std::string openFile(std::string line);
+
+void loadPoints(std::string fileString);
+
+void loadScene(std::string fileString);

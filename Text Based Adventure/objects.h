@@ -5,7 +5,7 @@
 class Object
 {
 public:
-	Object(int scene, std::string name, std::string description, bool aquirable, std::string interaction = "It's existing...", std::string secret = "Nothing", std::string secretMessage = "I dont see anything special");
+	Object(int scene, std::string name, std::string description, bool aquirable, std::string interaction = "It's existing...", std::string secret = "Nothing", std::string secretMessage = "I dont see anything special", bool interacted = false);
 	~Object();
 
 	std::string getName();
@@ -14,14 +14,16 @@ public:
 	std::string getSecret();
 	std::string getSecretMessage();
 	bool getAquirable();
+	bool getInteracted();
 	int getScene();
 	void setScene(int input);
+	void setInteracted(bool interacted);
 
 
 private:
 	std::string name, description, secret, secretMessage, interaction;
 	int scene;
-	bool aquirable;
+	bool aquirable, interacted;
 };
 
 class Keyword

@@ -3,10 +3,13 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <math.h>
 #include "save.h"
 #include "inventory.h"
 #include "debugLog.h"
 #include "coloredText.h"
+#include "init.h"
+#include "endingPoints.h"
 
 
 std::vector<int> savedUserChoicesNumbered = {};
@@ -16,10 +19,11 @@ const std::string CHOICES = "&";
 const std::string FILENAME = "saveFile.dat";
 
 
-
 void LOAD()
 {
-	const std::string FILE_STRING = openFile();
+	const std::string FILE_STRING = openFile("one");
+	const std::string FILE_LINE_TWO = openFile("two");
+	const std::string FILE_LINE_TREE = openFile("three");
 	if (FILE_STRING == "Error")
 	{
 		char temp;
@@ -52,11 +56,14 @@ void LOAD()
 	}
 	loadInventory(FILE_STRING);
 	loadChoices(FILE_STRING);
+	loadScene(FILE_LINE_TWO);
+	loadPoints(FILE_LINE_TREE);
 
-
+	std::cout << "Savefile successfully loaded!" << std::endl;
 	for (const auto& str : inventory) {
 		LOG("Loaded: " + str);
 	}
+	
 	for (const auto& str : savedUserChoicesNumbered) {
 		LOG("Saved: " + str);
 	}
@@ -85,23 +92,41 @@ void SAVE()
 			newSaveFile << CHOICES;
 		}
 	}
+
+	// scene
+	newSaveFile << "\n";
+	newSaveFile << currentScene << "\n";
+
+	newSaveFile << endingPoints;
+
 	newSaveFile.close();
 	std::cout << "Done!\n";
 }
 
-std::string openFile()
+std::string openFile(std::string line)
 {
 	std::string fileString;
 	std::ifstream loadFile;
-
+	std::string lineTwo;
+	std::string lineThree;
 
 	// opens file, if possible
 	loadFile.open(FILENAME);
 	if (loadFile.is_open())
 	{
-		std::getline(loadFile, fileString);
 
+		std::getline(loadFile, fileString);
+		std::getline(loadFile, lineTwo);
+		std::getline(loadFile, lineThree);
+
+	if (line == "one")
 		return fileString;
+	else if (line == "two")
+		return lineTwo;
+	else if (line == "three")
+		return lineThree;
+
+
 		loadFile.close();
 	}
 
@@ -154,3 +179,25 @@ void loadChoices(std::string fileString)
 		fileString.erase(0, pos + CHOICES.length());
 	}
 }
+
+void loadPoints(std::string fileString)
+{
+	int convertedString = 0;
+
+	// converts string to int
+	std::stringstream stringToInt(fileString);
+	stringToInt >> convertedString;
+
+	endingPoints = convertedString;
+}
+
+void loadScene(std::string fileString)
+{
+	int convertedString = 0;
+
+	// converts string to int
+	std::stringstream stringToInt(fileString);
+	stringToInt >> convertedString;
+
+	currentScene = convertedString;
+} 
