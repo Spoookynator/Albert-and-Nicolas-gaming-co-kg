@@ -31,7 +31,6 @@ int userChoiceNumbered(int options)
 	savedUserChoicesNumbered.push_back(input);
 	return input;
 }
-// use for story progression choices
 
 // conditionals for word finding in input
 // also find synonmys for words = more input variation
@@ -43,7 +42,7 @@ Keyword interact(false, { "interact", "interact,","interact.", "interact!", "int
 Keyword pickUp(false, { "take", "take,", "take.", "take!", "take?", "pick", "pick,", "pick.", "pick!", "pick?" });
 Keyword playerInventory(false, { "inventory", "inventory,", "inventory.", "inventory!", "inventory?",  "backpack", "backpack,", "backpack.", "backpack!", "backpack?", "bag", "bag,", "bag.", "bag!", "bag?" });
 Keyword turnOn(false, { "turn", "turn,", "turn.", "turn!", "turn?" });
-
+Keyword drink(false, { "drink", "drink,", "drink.", "drink!", "drink?" });
 
 
 
@@ -96,6 +95,7 @@ void userComandInterface()
 	// checks input for keywords
 	lookFor();
 
+	// CHANGE FOR NEW KEYWORD
 	// uses keywords from before
 	if (save.foundWords() == true)
 	{
@@ -187,6 +187,7 @@ void lookOptions(bool look)
 		{
 			std::cout << tv.getDescription();
 		}	
+
 		// default message when object not found
 		else {
 			color("You dont see a \"" + splitInput.at(2) + "\"!", "dred");
@@ -198,8 +199,8 @@ void lookOptions(bool look)
 	{
 		if (currentScene == tv.getScene() && k_tv.foundWords() == true)
 		{
-			color(tv.getInteraction(), "default");
-		}	
+			tv.getDescription();
+		}
 
 		// default message when object not found
 		else {
