@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="app.cpp" />
     <ClCompile Include="coloredText.cpp" />
     <ClCompile Include="dialogue.cpp" />
     <ClCompile Include="init.cpp" />

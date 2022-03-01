@@ -64,7 +64,6 @@ void Object::setScene(int input)
 	scene = input;
 }
 
-
 Keyword::Keyword(bool found, std::vector<std::string> keywords)
 {
 	this->keywords = keywords;

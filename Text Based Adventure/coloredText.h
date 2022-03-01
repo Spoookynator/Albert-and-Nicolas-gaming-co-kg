@@ -2,4 +2,4 @@
 #include <iostream>
 
 
-void color(std::string input, std::string color);
+void color(std::string input, std::string color, int textSpeed = 50);

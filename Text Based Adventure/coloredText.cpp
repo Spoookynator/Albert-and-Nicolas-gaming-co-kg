@@ -4,7 +4,7 @@
 #include "debugLog.h"
 
 
-void color(std::string input, std::string color)
+void color(std::string input, std::string color, int textSpeed)
 {
     // get the current console handle (idk what it does)
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -93,6 +93,14 @@ void color(std::string input, std::string color)
     {
         textColor = 15;
     }
+    if (color == "hwhite")
+    {
+        textColor = 16;
+    }
+    if (color == "hgrey")
+    {
+        textColor = 16;
+    }
 #pragma endregion
  
     //default text color
@@ -102,12 +110,22 @@ void color(std::string input, std::string color)
     }
 
     // if color is set
-    if (textColor != -101)
+    if (textColor != -101 && textColor != 16 && textColor != 17)
     {
         SetConsoleTextAttribute(hConsole, textColor);
-        std::cout << input;
+        int x = 0;
+        while (input[x] != '\0')
+        {
+            std::cout << input[x];
+            if (input[x] == ',') Sleep(textSpeed * 2);
+            if (input[x] == '.') Sleep(500 + (500 / textSpeed) * 20);
+            Sleep(textSpeed);
+            x++;
+        }
         SetConsoleTextAttribute(hConsole, saved_attributes);
     }
+    else if (textColor == 16) SetConsoleTextAttribute(hConsole, 15);
+    else if (textColor == 17) SetConsoleTextAttribute(hConsole, 7);
     else
     {
         LOG("\nError: Invalid color \"" + color + "\"");

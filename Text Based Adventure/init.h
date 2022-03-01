@@ -1,10 +1,5 @@
 #pragma once
 #include "objects.h"
+#include "Story/Intro/Intro.h"
 
 extern int currentScene;
-// scene 1
-extern Object tv;
-
-extern Keyword k_tv;
-
-// scene 2

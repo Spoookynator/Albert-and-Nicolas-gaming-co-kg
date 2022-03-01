@@ -63,6 +63,9 @@
     <ClCompile Include="storyLinker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debugLog.h">
@@ -96,7 +99,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Story\Intro\Intro.h">
-      <Filter>Header Files</Filter>
+      <Filter>Story</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

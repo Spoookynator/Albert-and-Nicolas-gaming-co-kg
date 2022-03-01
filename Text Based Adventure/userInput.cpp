@@ -174,6 +174,10 @@ void lookFor()
 		{
 			if (instance == words) k_tv.foundWords(true);
 		}
+		for (std::string instance : k_waterbottle.getKeywords())
+		{
+			if (instance == words) k_waterbottle.foundWords(true);
+		}
 
 	}
 }
@@ -183,10 +187,16 @@ void lookOptions(bool look)
 	
 	if (look == true)
 	{
+		// description
 		if (currentScene == tv.getScene() && k_tv.foundWords() == true)
 		{
-			std::cout << tv.getDescription();
+			color(tv.getDescription(), "dwhite");
 		}	
+		else if (currentScene == waterbottle.getScene() && k_waterbottle.foundWords() == true)
+		{
+			color(waterbottle.getDescription(), "dwhite");
+		}
+
 
 		// default message when object not found
 		else {
@@ -197,11 +207,15 @@ void lookOptions(bool look)
 	}
 	else
 	{
+		// interaction
 		if (currentScene == tv.getScene() && k_tv.foundWords() == true)
 		{
-			tv.getDescription();
+			color(tv.getInteraction(), "dwhite");
 		}
-
+		else if (currentScene == waterbottle.getScene() && k_waterbottle.foundWords() == true)
+		{
+			color(waterbottle.getInteraction(), "dwhite");
+		}
 		// default message when object not found
 		else {
 			color("You dont see a \"" + splitInput.at(2) + "\"!", "dred");
@@ -257,5 +271,6 @@ void clear()
 
 	// specific
 	k_tv.foundWords(false);
+	k_waterbottle.foundWords(false);
 }
 
