@@ -4,7 +4,10 @@
 #include <string>
 #include "dialogue.h"
 #include "coloredText.h"
+#include "debugLog.h"
 #include <mmsystem.h>
+
+int defaultTextSpeed = 50;
 
 void narration(std::string input)
 {
@@ -28,9 +31,11 @@ void output(std::string text, int textSpeed, bool dotPause)
 	while (text[x] != '\0')
 	{
 		std::cout << text[x];
+#ifdef TEXTPAUSE
 		if (text[x] == ',') Sleep(textSpeed * 2);
 		if (text[x] == '.' && dotPause == true) Sleep(500 + (500 / textSpeed) * 20);
 		Sleep(textSpeed);
+#endif
 		x++;
 	}
 }
@@ -50,7 +55,9 @@ void title(std::string title)
 	for (int i = 0; i < 120; i++)
 	{
 		std::cout << "_";
+#ifdef TEXTPAUSE
 		Sleep(10);
+#endif
 	}
 	std::cout << "\n" << std::endl;
 
@@ -67,7 +74,9 @@ void title(std::string title)
 	while (title[x] != '\0')
 	{
 		std::cout << title[x];
+#ifdef TEXTPAUSE
 		Sleep(100);
+#endif
 		x++;
 	}
 
@@ -76,7 +85,9 @@ void title(std::string title)
 	for (int i = 0; i < 120; i++)
 	{
 		std::cout << "_";
+#ifdef TEXTPAUSE
 		Sleep(10);
+#endif
 	}
 	std::cout << "\n" << std::endl;
 }
@@ -85,7 +96,9 @@ void fillLine(char character)
 	for (int i = 0; i < 120; i++)
 	{
 		std::cout << character;
+#ifdef TEXTPAUSE
 		Sleep(10);
+#endif
 	}
 	std::cout << "\n" << std::endl;
 }

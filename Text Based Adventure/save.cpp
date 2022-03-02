@@ -33,7 +33,7 @@ void LOAD()
 		// clear cin since it had problems with implementing in other files
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
+		 
 		while (std::cin.fail() || (!(temp == 'y') && !(temp == 'Y') && !(temp == 'n') && !(temp == 'N')))
 		{
 			color("Error: Illegal character\n", "dred");

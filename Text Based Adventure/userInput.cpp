@@ -17,7 +17,11 @@ std::vector<std::string> splitInput;
 
 int userChoiceNumbered(int options)
 {
+	// sets text color to grey
+	color("nothing", "hgrey");
+	
 	int input;
+
 	std::cin >> input;
 
 	while (std::cin.fail() || input <= 0 || input > options)
@@ -30,6 +34,9 @@ int userChoiceNumbered(int options)
 
 	savedUserChoicesNumbered.push_back(input);
 	return input;
+
+	// changes the text color back to white
+	color("nothing", "hwhite");
 }
 
 // conditionals for word finding in input
@@ -48,10 +55,12 @@ Keyword drink(false, { "drink", "drink,", "drink.", "drink!", "drink?" });
 
 void userComandInterface()
 {
+	// sets text color to grey
+	color("nothing", "hgrey");
 	std::string input;
 	splitInput.clear();
 	getline(std::cin, input);
-
+	
 	std::cin.clear();
 
 	// input validation
@@ -112,10 +121,16 @@ void userComandInterface()
 	else if (interact.foundWords() == true)
 	{
 		lookOptions(false);
+
+	}
+	else if (drink.foundWords() == true)
+	{
+		lookOptions(false);
+
 	}
 	else if (turnOn.foundWords() == true)
 	{
-		turnON();
+		lookOptions(false);
 	}
 	else if (pickUp.foundWords() == true)
 	{
@@ -128,9 +143,13 @@ void userComandInterface()
 		std::cin.clear();
 	}
 	else {
-		color("You cant do that!\n", "dred");
+		color("You can't do that!\n", "dred");
 		userComandInterface();
 	}
+
+
+	// changes the text color back to white
+	color("nothing", "hwhite");
 } 
 
 void lookFor()
@@ -168,6 +187,10 @@ void lookFor()
 		{
 			if (instance == words) turnOn.foundWords(true);
 		}
+		for (std::string instance : drink.getKeywords())
+		{
+			if (instance == words) drink.foundWords(true);
+		}
 #pragma endregion
 		// specific words
 		for (std::string instance : k_tv.getKeywords())
@@ -190,17 +213,17 @@ void lookOptions(bool look)
 		// description
 		if (currentScene == tv.getScene() && k_tv.foundWords() == true)
 		{
-			color(tv.getDescription(), "dwhite");
+			color(tv.getDescription(), "grey");
 		}	
 		else if (currentScene == waterbottle.getScene() && k_waterbottle.foundWords() == true)
 		{
-			color(waterbottle.getDescription(), "dwhite");
+			color(waterbottle.getDescription(), "grey");
 		}
 
 
 		// default message when object not found
 		else {
-			color("You dont see a \"" + splitInput.at(2) + "\"!", "dred");
+			color("You don't see that!", "dred");
 			std::cout << std::endl;
 			userComandInterface();
 		}
@@ -210,15 +233,17 @@ void lookOptions(bool look)
 		// interaction
 		if (currentScene == tv.getScene() && k_tv.foundWords() == true)
 		{
-			color(tv.getInteraction(), "dwhite");
+			color(tv.getInteraction(), "grey");
+			tv.setInteracted(true);
 		}
 		else if (currentScene == waterbottle.getScene() && k_waterbottle.foundWords() == true)
 		{
-			color(waterbottle.getInteraction(), "dwhite");
+			color(waterbottle.getInteraction(), "grey");
+			waterbottle.setInteracted(true);
 		}
 		// default message when object not found
 		else {
-			color("You dont see a \"" + splitInput.at(2) + "\"!", "dred");
+			color("You don't see that!", "dred");
 			std::cout << std::endl;
 			userComandInterface();
 
@@ -230,7 +255,7 @@ void turnON()
 {
 	if (currentScene == tv.getScene() && k_tv.foundWords() == true)
 	{
-		color(tv.getInteraction(), "default");
+		color(tv.getInteraction(), "grey");
 		tv.setInteracted(true);
 	}
 	else {
@@ -268,6 +293,7 @@ void clear()
 	interact.foundWords(false);
 	pickUp.foundWords(false);
 	turnOn.foundWords(false);
+	drink.foundWords(false);
 
 	// specific
 	k_tv.foundWords(false);

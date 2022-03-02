@@ -99,7 +99,7 @@ void color(std::string input, std::string color, int textSpeed)
     }
     if (color == "hgrey")
     {
-        textColor = 16;
+        textColor = 17;
     }
 #pragma endregion
  
@@ -117,15 +117,17 @@ void color(std::string input, std::string color, int textSpeed)
         while (input[x] != '\0')
         {
             std::cout << input[x];
+#ifdef TEXTPAUSE
             if (input[x] == ',') Sleep(textSpeed * 2);
             if (input[x] == '.') Sleep(500 + (500 / textSpeed) * 20);
             Sleep(textSpeed);
+#endif
             x++;
         }
         SetConsoleTextAttribute(hConsole, saved_attributes);
     }
     else if (textColor == 16) SetConsoleTextAttribute(hConsole, 15);
-    else if (textColor == 17) SetConsoleTextAttribute(hConsole, 7);
+    else if (textColor == 17) SetConsoleTextAttribute(hConsole, 8);
     else
     {
         LOG("\nError: Invalid color \"" + color + "\"");

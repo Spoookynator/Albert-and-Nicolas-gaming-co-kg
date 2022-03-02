@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 
+extern int defaultTextSpeed;
+
 void narration(std::string);
 
 void dialogue(std::string name, std::string text, std::string nameColor = "default", std::string textColor = "default", int textSpeed = 50);

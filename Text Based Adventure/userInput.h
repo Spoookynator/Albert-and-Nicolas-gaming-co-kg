@@ -13,4 +13,3 @@ void clear();
 
 // custom functions
 void pickUpItem();
-void turnON();
