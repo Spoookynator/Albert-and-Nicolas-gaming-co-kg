@@ -5,14 +5,14 @@ extern int defaultTextSpeed;
 
 void narration(std::string);
 
-void dialogue(std::string name, std::string text, std::string nameColor = "default", std::string textColor = "default", int textSpeed = 50);
+void dialogue(std::string name, std::string text, std::string nameColor = "default", std::string textColor = "default", int textSpeed = defaultTextSpeed);
 
-void output(std::string text, int textSpeed = 50, bool dotPause = true);
+void output(std::string text, int textSpeed = defaultTextSpeed, bool dotPause = true);
 
-void newLine(int lines = 1, int delay = 1300);
+void newLine(int lines = 1, int delay = defaultTextSpeed * 26);
 
-void fillLine(char character);
+void fillLine(char character, int spaces = 0);
 
-void s(int sleep = 1500);
+void s(int sleep = defaultTextSpeed * 30);
 
 void title(std::string title);

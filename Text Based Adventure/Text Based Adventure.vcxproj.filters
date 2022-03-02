@@ -66,6 +66,9 @@
     <ClCompile Include="app.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Story\Main Part\Cellar\Shared Path\CellarIntro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debugLog.h">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="Story\Intro\Intro.h">
       <Filter>Story</Filter>
+    </ClInclude>
+    <ClInclude Include="Story\Main Part\Cellar\Shared Path\CellarIntro.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

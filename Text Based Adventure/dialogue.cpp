@@ -56,7 +56,7 @@ void title(std::string title)
 	{
 		std::cout << "_";
 #ifdef TEXTPAUSE
-		Sleep(10);
+		Sleep(5);
 #endif
 	}
 	std::cout << "\n" << std::endl;
@@ -86,21 +86,39 @@ void title(std::string title)
 	{
 		std::cout << "_";
 #ifdef TEXTPAUSE
-		Sleep(10);
+		Sleep(5);
 #endif
 	}
 	std::cout << "\n" << std::endl;
 }
-void fillLine(char character)
+void fillLine(char character, int spaces)
 {
-	for (int i = 0; i < 120; i++)
+	if (spaces == 0)
 	{
-		std::cout << character;
+		for (int i = 0; i < 120; i++)
+		{
+			std::cout << character;
 #ifdef TEXTPAUSE
-		Sleep(10);
+			Sleep(10);
 #endif
 	}
-	std::cout << "\n" << std::endl;
+		std::cout << "\n" << std::endl;
+}
+	else
+	{
+		for (int i = 0; i < 120 / (spaces + 1); i++)
+		{
+			std::cout << character;
+#ifdef TEXTPAUSE
+			Sleep(10);
+#endif
+			std::cout << " ";
+#ifdef TEXTPAUSE
+			Sleep(10);
+#endif
+		}
+		std::cout << "\n" << std::endl;
+	}
 }
 void s(int sleep)
 {

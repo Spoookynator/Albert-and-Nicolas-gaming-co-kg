@@ -63,6 +63,14 @@ void Object::setScene(int input)
 {
 	scene = input;
 }
+void Object::setInteraction(std::string input)
+{
+	interaction = input;
+}
+void Object::setDescription(std::string input)
+{
+	description = input;
+}
 
 Keyword::Keyword(bool found, std::vector<std::string> keywords)
 {

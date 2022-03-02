@@ -9,6 +9,9 @@ void userComandInterface();
 void lookFor();
 
 void lookOptions(bool look);
+
+void setTextspeed();
+
 void clear();
 
 // custom functions

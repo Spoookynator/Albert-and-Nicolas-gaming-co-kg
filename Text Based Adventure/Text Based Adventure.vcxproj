@@ -130,6 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -153,6 +154,7 @@
     <ClCompile Include="Story\Endings\Ending1.cpp" />
     <ClCompile Include="Story\Endings\Ending2.cpp" />
     <ClCompile Include="Story\Intro\Intro.cpp" />
+    <ClCompile Include="Story\Main Part\Cellar\Shared Path\CellarIntro.cpp" />
     <ClCompile Include="userInput.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +168,7 @@
     <ClInclude Include="objects.h" />
     <ClInclude Include="save.h" />
     <ClInclude Include="Story\Intro\Intro.h" />
+    <ClInclude Include="Story\Main Part\Cellar\Shared Path\CellarIntro.h" />
     <ClInclude Include="userInput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

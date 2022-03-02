@@ -2,7 +2,6 @@
 #include "..\..\dialogue.h"
 #include "..\..\coloredText.h"
 #include "..\..\init.h"
-#include <windows.h>
 // Objects/Keywords in scene 1
 Object tv(1, "TV", "It's your old TV. Looks like can it can be turned on", false, "You turn on the TV, it's flickering and producing nothing but white noise. Suddenly, the news channel turns on.");
 Keyword k_tv(false, { "television", "television,", "television.", "television!", "television?", "tv", "tv,", "tv.", "tv!", "tv?" });
@@ -14,11 +13,13 @@ Keyword k_waterbottle(false, { "waterbottle", "waterbottle,", "waterbottle.", "w
 void intro()
 {
 	// sets scene at the beginning
-	currentScene = 1;
+	currentScene = 3;
 	// ---------------------------
 
 	// question if user wants to load save or start new one
 
+
+	// SCENE 1 //
 	if (currentScene == 1)
 	{
 		title("Your Room");
@@ -31,7 +32,7 @@ void intro()
 
 		output("Your mom has nightshift today, you are all alone. You can't help but reminisce about the past.\nThe day your father went to buy milk, but never returned."); newLine(2);
 
-		output("It's a painful debugging process."); newLine(2);
+		output("It's a painful memory."); newLine(2);
 
 		output("You can remember the days after, you still had faith in him. \nEvery day you and your mom peeked outside your unbelievably small, disgusting, apartment, in hope that he would return."); newLine(2);
 
@@ -60,6 +61,7 @@ void intro()
 		{
 			userComandInterface();
 		}
+		newLine();
 
 		currentScene = 2;
 	}
@@ -67,14 +69,16 @@ void intro()
 	{
 		output("You hear a female voice echoeing from the telly: "); newLine(2);
 
+		fillLine('.');
 		output("\"It is 10pm on this Saturday the 10th of March 2033, and you are watching BOX NEWS.\"", 20, false); newLine(2);
 
 		output("\"I am your host of tonights show, Margret Thatcher!\"", 20, false); newLine(2);
 
-		output("\* BOX NEWS MELODY \*", 125); newLine(2);
-		fillLine('.');
+		output("* BOX NEWS MELODY *", 125); newLine(2);
 		output("\"The evacuation of our beloved nation is still in process.\"", 20, false); newLine(2);
 		output("\"As of right now, about 80% of Mokokoians have made it onto the ", 20); color("SS Mokoko", "green", 275); output(" and-\"");  newLine(2);
+		fillLine('.');
+
 		color("*buzz*  *zap*", "dred", 20); newLine(2);
 
 		output("The TV abruptly shuts down, accompanied by a loud zapping noise"); newLine(2);
@@ -86,10 +90,15 @@ void intro()
 
 		output("Your vision starts to get blurry. You desperatly want to slurp all of the water in hope, \nthat it will make you feel better."); newLine(2);
 
+		fillLine('>', 1);
 		while (waterbottle.getInteracted() == false)
 		{
 			userComandInterface();
 		}
-		
+		newLine();
+	
+		output("You feel refreshed. But only for a brief moment.\nYou start to flounder, slowly loosing more of your consciousness until you start to tumble, \nstubbing your toe on your desk in the process and falling to the ground");
+
+		currentScene = 3;
 	}
 }

@@ -26,17 +26,19 @@ int userChoiceNumbered(int options)
 
 	while (std::cin.fail() || input <= 0 || input > options)
 	{
-		color("Only numbers between 1 and " + std::to_string(options) + " are valid, please try again!\n", "dred");
+		color("You should choose a number between 1 and " + std::to_string(options) + "\n", "dred");
 		std::cin.clear();
-		std::cin.ignore(256, '\n');
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cin >> input;
 	}
 
 	savedUserChoicesNumbered.push_back(input);
-	return input;
 
 	// changes the text color back to white
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	color("nothing", "hwhite");
+	return input;
 }
 
 // conditionals for word finding in input
@@ -44,6 +46,7 @@ int userChoiceNumbered(int options)
 // universal words
 Keyword save(false, { "save", "save,", "save.", "save!", "save?" });
 Keyword load(false, { "load", "load,", "load.", "load!", "load?" });
+Keyword textspeed(false, { "textspeed", "textspeed,", "textspeed.", "textspeed!"});
 Keyword look(false, { "look", "look,", "look.", "look!", "look?", "inspect", "inspect,", "inspect.", "inspect!", "inspect?", "examine", "examine,", "examine.", "examine!", "examine?" });
 Keyword interact(false, { "interact", "interact,","interact.", "interact!", "interact?", "touch", "touch,","touch.", "touch!", "touch?", "interact", "interact,","interact.", "interact!", "interact?" });
 Keyword pickUp(false, { "take", "take,", "take.", "take!", "take?", "pick", "pick,", "pick.", "pick!", "pick?" });
@@ -114,6 +117,11 @@ void userComandInterface()
 	{
 		LOAD();
 	}
+	else if (textspeed.foundWords() == true)
+	{
+		setTextspeed();
+		std::cin.clear();
+	}
 	else if (look.foundWords() == true)
 	{
 		lookOptions(true);
@@ -175,6 +183,10 @@ void lookFor()
 		{
 			if (instance == words) interact.foundWords(true);
 		}
+		for (std::string instance : textspeed.getKeywords())
+		{
+			if (instance == words) textspeed.foundWords(true);
+		}
 		for (std::string instance : pickUp.getKeywords())
 		{
 			if (instance == words) pickUp.foundWords(true);
@@ -201,8 +213,65 @@ void lookFor()
 		{
 			if (instance == words) k_waterbottle.foundWords(true);
 		}
+		for (std::string instance : k_gascanister.getKeywords())
+		{
+			if (instance == words) k_gascanister.foundWords(true);
+		}
+		for (std::string instance : k_radio.getKeywords())
+		{
+			if (instance == words) k_radio.foundWords(true);
+		}
+		for (std::string instance : k_key.getKeywords())
+		{
+			if (instance == words) k_key.foundWords(true);
+		}
+		for (std::string instance : k_door.getKeywords())
+		{
+			if (instance == words) k_door.foundWords(true);
+		}
 
 	}
+}
+
+void setTextspeed()
+{
+	int textspeed = 0;
+	for (std::string words : splitInput)
+	{
+		if (words == "slow" || words == "easy" || words == "relaxed")
+		{
+			textspeed = 0;
+		}
+		else if (words == "default" || words == "normal" || words == "standart" || words == "ordinary" || words == "regualar")
+		{
+			textspeed = 1;
+		}
+		else if (words == "fast" || words == "quick" || words == "swift")
+		{
+			textspeed = 2;
+		}
+
+	}
+
+	switch (textspeed)
+	{
+	case 0:
+		textspeed = 80;
+		color("You are now using the slow text speed.\n", "grey");
+		break;
+	case 1:
+		textspeed = 50;
+		color("You are now using the default text speed.\n", "grey");
+		break;
+	case 2:
+		textspeed = 30;
+		color("ZOOOOOOOM.\n", "yellow");
+		break;
+	default:
+		color("Wrong input!\n", "dred");
+		break;
+	}
+
 }
 void lookOptions(bool look)
 {
@@ -213,14 +282,28 @@ void lookOptions(bool look)
 		// description
 		if (currentScene == tv.getScene() && k_tv.foundWords() == true)
 		{
-			color(tv.getDescription(), "grey");
+			color(tv.getDescription(), "white");
 		}	
 		else if (currentScene == waterbottle.getScene() && k_waterbottle.foundWords() == true)
 		{
-			color(waterbottle.getDescription(), "grey");
+			color(waterbottle.getDescription(), "white");
 		}
-
-
+		else if (currentScene == gascanister.getScene() && k_gascanister.foundWords() == true)
+		{
+			color(gascanister.getDescription(), "white");
+		}
+		else if (currentScene == radio.getScene() && k_radio.foundWords() == true)
+		{
+			color(radio.getDescription(), "white");
+		}
+		else if (currentScene == key.getScene() && k_key.foundWords() == true)
+		{
+			color(key.getDescription(), "white");
+		}
+		else if (currentScene == door.getScene() && k_door.foundWords() == true)
+		{
+			color(door.getDescription(), "white");
+		}
 		// default message when object not found
 		else {
 			color("You don't see that!", "dred");
@@ -233,13 +316,40 @@ void lookOptions(bool look)
 		// interaction
 		if (currentScene == tv.getScene() && k_tv.foundWords() == true)
 		{
-			color(tv.getInteraction(), "grey");
+			color(tv.getInteraction(), "white");
 			tv.setInteracted(true);
 		}
 		else if (currentScene == waterbottle.getScene() && k_waterbottle.foundWords() == true)
 		{
-			color(waterbottle.getInteraction(), "grey");
+			color(waterbottle.getInteraction(), "white");
 			waterbottle.setInteracted(true);
+		}
+		else if (currentScene == gascanister.getScene() && k_gascanister.foundWords() == true)
+		{
+			color(gascanister.getInteraction(), "white");
+			gascanister.setInteracted(true);
+		}
+		else if (currentScene == radio.getScene() && k_radio.foundWords() == true)
+		{
+			color(radio.getInteraction(), "white");
+			radio.setInteracted(true);
+		}
+		else if (currentScene == door.getScene() && k_door.foundWords() == true)
+		{
+			if (radio.getInteracted() == true)
+			{
+				if (inventoryCheckFor(key.getName()) == true)
+				{
+					color("You insert your key into the keyhole. You turn it with an audible *click* and the door opens.", "white");
+					door.setInteracted(true);
+				}
+				else
+					color(door.getInteraction(), "white");
+			}
+			else
+			{
+				color("You think about using the key, but feel like you're overlooking something important.", "white");
+			}
 		}
 		// default message when object not found
 		else {
@@ -251,30 +361,12 @@ void lookOptions(bool look)
 	}
 }
 
-void turnON()
-{
-	if (currentScene == tv.getScene() && k_tv.foundWords() == true)
-	{
-		color(tv.getInteraction(), "grey");
-		tv.setInteracted(true);
-	}
-	else {
-		color("You can't do that!", "dred");
-		std::cout << std::endl;
-		userComandInterface();
-	}
-}
 void pickUpItem()
 {
-	//if (currentScene == rock.getScene() && k_rock.foundWords() == true && rock.getAquirable() == true)
-	//{
-	//	addToInventory(rock.getName());
-	//	rock.setScene(-1);
-	//}
-	int a = false;
-	if (a == true)
+	if (currentScene == key.getScene() && k_key.foundWords() == true && key.getAquirable() == true)
 	{
-
+		addToInventory(key.getName());
+		key.setScene(-1);
 	}
 		else {
 		color("You can't do that!", "dred");
@@ -290,6 +382,7 @@ void clear()
 	save.foundWords(false);
 	load.foundWords(false);
 	look.foundWords(false);
+	textspeed.foundWords(false);
 	interact.foundWords(false);
 	pickUp.foundWords(false);
 	turnOn.foundWords(false);
@@ -298,5 +391,8 @@ void clear()
 	// specific
 	k_tv.foundWords(false);
 	k_waterbottle.foundWords(false);
+	k_radio.foundWords(false);
+	k_gascanister.foundWords(false);
+	k_key.foundWords(false);
 }
 

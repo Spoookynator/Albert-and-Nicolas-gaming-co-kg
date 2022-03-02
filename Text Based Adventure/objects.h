@@ -18,6 +18,9 @@ public:
 	int getScene();
 	void setScene(int input);
 	void setInteracted(bool interacted);
+	void setInteraction(std::string input);
+	void setDescription(std::string input);
+
 
 private:
 	std::string name, description, secret, secretMessage, interaction;
