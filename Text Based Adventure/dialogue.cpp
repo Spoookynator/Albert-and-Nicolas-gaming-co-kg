@@ -7,7 +7,6 @@
 #include "debugLog.h"
 #include <mmsystem.h>
 
-int defaultTextSpeed = 50;
 
 void narration(std::string input)
 {
@@ -32,8 +31,8 @@ void output(std::string text, int textSpeed, bool dotPause)
 	{
 		std::cout << text[x];
 #ifdef TEXTPAUSE
-		if (text[x] == ',') Sleep(textSpeed * 2);
-		if (text[x] == '.' && dotPause == true) Sleep(500 + (500 / textSpeed) * 20);
+		if (text[x] == ',' && textSpeed > 0) Sleep(textSpeed * 2);
+		if (text[x] == '.' && dotPause == true && textSpeed > 0) Sleep(500 + (500 / textSpeed) * 20);
 		Sleep(textSpeed);
 #endif
 		x++;

@@ -1,23 +1,17 @@
-#include "..\..\userInput.h"
+﻿#include "..\..\userInput.h"
 #include "..\..\dialogue.h"
 #include "..\..\coloredText.h"
 #include "..\..\init.h"
 // Objects/Keywords in scene 1
-Object tv(1, "TV", "It's your old TV. Looks like can it can be turned on", false, "You turn on the TV, it's flickering and producing nothing but white noise. Suddenly, the news channel turns on.");
+Object tv(1, "TV", "It's your old TV. Looks like it can be turned on", false, "You turn on the TV, it's flickering and producing nothing but white noise. Suddenly, the news channel turns on.");
 Keyword k_tv(false, { "television", "television,", "television.", "television!", "television?", "tv", "tv,", "tv.", "tv!", "tv?" });
 
 //scene 2
-Object waterbottle(2, "Water bottle", "Your favourite water bottle.The water looks so juicy right now. \nYour thoughts fill with the urge to drink from it", false, "You start jugging the water like crazy, gobbling down all of it as fast as you can.");
+Object waterbottle(2, "Water bottle", "Your favourite water bottle.The water looks so juicy right now. \nYour thoughts fill with the urge to drink from it.", false, "You start jugging the water like crazy, gobbling down all of it as fast as you can.");
 Keyword k_waterbottle(false, { "waterbottle", "waterbottle,", "waterbottle.", "waterbottle!", "waterbottle?", "bottle", "bottle,", "bottle.", "bottle!", "bottle?" });
 
 void intro()
 {
-	// sets scene at the beginning
-	currentScene = 3;
-	// ---------------------------
-
-	// question if user wants to load save or start new one
-
 
 	// SCENE 1 //
 	if (currentScene == 1)
@@ -54,9 +48,10 @@ void intro()
 
 		output("It always helped you distract yourself from reality."); newLine(2); 
 
-		output("Maybe you should "); color("turn it on", "cyan"); output(" and see whats on the news!"); newLine(2);
+		output("Maybe you should "); color("turn it on", "cyan"); output(" and see whats on the news!"); newLine(2, 0);
 
 		// stops until user TURNS ON the TV or INTERACTS with it
+		fillLine('>', 1);
 		while (tv.getInteracted() == false)
 		{
 			userComandInterface();
@@ -75,7 +70,7 @@ void intro()
 		output("\"I am your host of tonights show, Margret Thatcher!\"", 20, false); newLine(2);
 
 		output("* BOX NEWS MELODY *", 125); newLine(2);
-		output("\"The evacuation of our beloved nation is still in process.\"", 20, false); newLine(2);
+		output("\"The evacuation of our beloved nation is still in progress.\"", 20, false); newLine(2);
 		output("\"As of right now, about 80% of Mokokoians have made it onto the ", 20); color("SS Mokoko", "green", 275); output(" and-\"");  newLine(2);
 		fillLine('.');
 
@@ -97,7 +92,8 @@ void intro()
 		}
 		newLine();
 	
-		output("You feel refreshed. But only for a brief moment.\nYou start to flounder, slowly loosing more of your consciousness until you start to tumble, \nstubbing your toe on your desk in the process and falling to the ground");
+		output("You feel refreshed. But only for a brief moment.\nYou start to flounder, slowly loosing more of your consciousness until you start to tumble, \nstubbing your toe on your desk in the process and falling to the ground"); newLine(2);
+		output("Then everything goes black...", 300); newLine(2);
 
 		currentScene = 3;
 	}

@@ -66,7 +66,13 @@
     <ClCompile Include="app.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Story\Main Part\Cellar\Shared Path\CellarIntro.cpp">
+    <ClCompile Include="Story\Main Part\Cellar\Shared Path\Cellar_Intro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="variables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Story\Intro\Title_Screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,7 +110,13 @@
     <ClInclude Include="Story\Intro\Intro.h">
       <Filter>Story</Filter>
     </ClInclude>
-    <ClInclude Include="Story\Main Part\Cellar\Shared Path\CellarIntro.h">
+    <ClInclude Include="Story\Main Part\Cellar\Shared Path\Cellar_Intro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="variables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Story\Intro\Title_Screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

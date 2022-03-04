@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
-
-extern int defaultTextSpeed;
+#include "variables.h"
 
 void narration(std::string);
 

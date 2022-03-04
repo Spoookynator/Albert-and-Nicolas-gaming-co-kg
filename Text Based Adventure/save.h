@@ -22,3 +22,5 @@ std::string openFile(std::string line);
 void loadPoints(std::string fileString);
 
 void loadScene(std::string fileString);
+
+void loadDefaultTextSpeed(std::string fileString);

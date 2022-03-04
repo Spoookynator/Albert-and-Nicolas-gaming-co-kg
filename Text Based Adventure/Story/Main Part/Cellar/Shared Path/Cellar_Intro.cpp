@@ -1,4 +1,4 @@
-#include "CellarIntro.h"
+#include "Cellar_Intro.h"
 #include "..\..\..\..\userInput.h"
 #include "..\..\..\..\dialogue.h"
 #include "..\..\..\..\coloredText.h"
@@ -34,9 +34,9 @@ void cellarIntro()
 		output("Slowly your eyes start to adjust to the darkness.\nYou hear lots of muffled noises.\nUnable to tell where they come from, you try to make out their origins."); newLine(2);
 		
 		color("You fail.", "dred", 250); newLine(2);
-		output("After accepting your failure, you start slendering through this unknown environment, trying to make out where you are.\nAs you are walking around aimlessly, your run into a wall.\nYou let your hand run along the wall in hope to find something."); newLine(2);
+		output("After accepting your failure, you start slendering through this unknown environment, trying to make out where you are.\nAs you are walking around aimlessly, you run into a wall.\nYou let your hand run along the wall in hope to find something."); newLine(2);
 		output("Luckily, your hand brushes against something sticking out from the wall.\nIt seems to be a light switch, but you aren't quite sure."); newLine(2);
-		output("Do you want to try to flip the switch?\nYes[1] No[2]"); newLine(2);
+		output("Do you want to try to flip the switch?\nYes[1] No[2]"); newLine(2, 0);
 		
 		int choice = 1;
 		int iteration = 1;
@@ -56,7 +56,7 @@ void cellarIntro()
 			iteration++;
 		} while (choice == 2);
 		
-		if (iteration > 3) output("Thank God. You finally decide to flip the switch. I thought you were going to die in here...");
+		if (iteration > 3) output("Thank God. You finally decide to flip the switch. I thought you were going to die in here..."); newLine(2);
 		output("You flip the switch, expecting to finally see an explosion of light brighten up the room. ");
 		newLine(2);
 
@@ -88,5 +88,13 @@ void cellarIntro()
 			userComandInterface();
 		}
 		output("After quickly peeking ahead, you proceed through the door.");
+	}
+	else if (currentScene == 5)
+	{
+		while (true)
+		{
+		userComandInterface();
+
+		}
 	}
 }

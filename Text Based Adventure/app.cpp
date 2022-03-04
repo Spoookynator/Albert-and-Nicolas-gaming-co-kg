@@ -13,5 +13,7 @@ void runApp()
 	SetConsoleMode(hInput, prev_mode & ENABLE_EXTENDED_FLAGS | (prev_mode & ~ENABLE_QUICK_EDIT_MODE));
 
 	color("ds", "hwhite");
+
+	SetConsoleTitleA("Mokoko Island");
 	linkedStory();
 }

@@ -10,6 +10,7 @@
 #include "coloredText.h"
 #include "init.h"
 #include "endingPoints.h"
+#include "dialogue.h"
 
 
 std::vector<int> savedUserChoicesNumbered = {};
@@ -21,9 +22,12 @@ const std::string FILENAME = "saveFile.dat";
 
 void LOAD()
 {
+
 	const std::string FILE_STRING = openFile("one");
 	const std::string FILE_LINE_TWO = openFile("two");
 	const std::string FILE_LINE_TREE = openFile("three");
+	const std::string FILE_LINE_FOUR = openFile("four");
+
 	if (FILE_STRING == "Error")
 	{
 		char temp;
@@ -58,15 +62,10 @@ void LOAD()
 	loadChoices(FILE_STRING);
 	loadScene(FILE_LINE_TWO);
 	loadPoints(FILE_LINE_TREE);
+	loadPoints(FILE_LINE_FOUR);
 
-	std::cout << "Savefile successfully loaded!" << std::endl;
-	for (const auto& str : inventory) {
-		LOG("Loaded: " + str);
-	}
-	
-	for (const auto& str : savedUserChoicesNumbered) {
-		LOG("Saved: " + str);
-	}
+
+	std::cout << "Save file successfully loaded!" << std::endl;
 }
 
 void SAVE()
@@ -97,7 +96,9 @@ void SAVE()
 	newSaveFile << "\n";
 	newSaveFile << currentScene << "\n";
 
-	newSaveFile << endingPoints;
+	newSaveFile << endingPoints << "\n";
+
+	newSaveFile << defaultTextSpeed;
 
 	newSaveFile.close();
 	std::cout << "Done!\n";
@@ -109,6 +110,7 @@ std::string openFile(std::string line)
 	std::ifstream loadFile;
 	std::string lineTwo;
 	std::string lineThree;
+	std::string lineFour;
 
 	// opens file, if possible
 	loadFile.open(FILENAME);
@@ -118,6 +120,8 @@ std::string openFile(std::string line)
 		std::getline(loadFile, fileString);
 		std::getline(loadFile, lineTwo);
 		std::getline(loadFile, lineThree);
+		std::getline(loadFile, lineFour);
+
 
 	if (line == "one")
 		return fileString;
@@ -125,6 +129,8 @@ std::string openFile(std::string line)
 		return lineTwo;
 	else if (line == "three")
 		return lineThree;
+	else if (line == "four")
+		return lineFour;
 
 
 		loadFile.close();
@@ -201,3 +207,14 @@ void loadScene(std::string fileString)
 
 	currentScene = convertedString;
 } 
+
+void loadDefaultTextSpeed(std::string fileString)
+{
+	int convertedString = 0;
+
+	// converts string to int
+	std::stringstream stringToInt(fileString);
+	stringToInt >> convertedString;
+
+	defaultTextSpeed = convertedString;
+}

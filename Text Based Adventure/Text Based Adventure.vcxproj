@@ -154,8 +154,10 @@
     <ClCompile Include="Story\Endings\Ending1.cpp" />
     <ClCompile Include="Story\Endings\Ending2.cpp" />
     <ClCompile Include="Story\Intro\Intro.cpp" />
-    <ClCompile Include="Story\Main Part\Cellar\Shared Path\CellarIntro.cpp" />
+    <ClCompile Include="Story\Intro\Title_Screen.cpp" />
+    <ClCompile Include="Story\Main Part\Cellar\Shared Path\Cellar_Intro.cpp" />
     <ClCompile Include="userInput.cpp" />
+    <ClCompile Include="variables.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="app.h" />
@@ -163,12 +165,14 @@
     <ClInclude Include="debugLog.h" />
     <ClInclude Include="dialogue.h" />
     <ClInclude Include="endingPoints.h" />
+    <ClInclude Include="Story\Intro\Title_Screen.h" />
+    <ClInclude Include="variables.h" />
     <ClInclude Include="init.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="objects.h" />
     <ClInclude Include="save.h" />
     <ClInclude Include="Story\Intro\Intro.h" />
-    <ClInclude Include="Story\Main Part\Cellar\Shared Path\CellarIntro.h" />
+    <ClInclude Include="Story\Main Part\Cellar\Shared Path\Cellar_Intro.h" />
     <ClInclude Include="userInput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

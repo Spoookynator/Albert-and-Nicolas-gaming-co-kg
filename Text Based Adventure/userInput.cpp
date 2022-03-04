@@ -11,6 +11,7 @@
 #include "debugLog.h"
 
 
+
 std::vector<std::string> splitInput;
 
 // use for story progression choices
@@ -48,6 +49,7 @@ Keyword save(false, { "save", "save,", "save.", "save!", "save?" });
 Keyword load(false, { "load", "load,", "load.", "load!", "load?" });
 Keyword textspeed(false, { "textspeed", "textspeed,", "textspeed.", "textspeed!"});
 Keyword look(false, { "look", "look,", "look.", "look!", "look?", "inspect", "inspect,", "inspect.", "inspect!", "inspect?", "examine", "examine,", "examine.", "examine!", "examine?" });
+Keyword quit(false, { "quit", "exit"});
 Keyword interact(false, { "interact", "interact,","interact.", "interact!", "interact?", "touch", "touch,","touch.", "touch!", "touch?", "interact", "interact,","interact.", "interact!", "interact?" });
 Keyword pickUp(false, { "take", "take,", "take.", "take!", "take?", "pick", "pick,", "pick.", "pick!", "pick?" });
 Keyword playerInventory(false, { "inventory", "inventory,", "inventory.", "inventory!", "inventory?",  "backpack", "backpack,", "backpack.", "backpack!", "backpack?", "bag", "bag,", "bag.", "bag!", "bag?" });
@@ -143,12 +145,20 @@ void userComandInterface()
 	else if (pickUp.foundWords() == true)
 	{
 		pickUpItem();
-
 	}
 	else if (playerInventory.foundWords() == true)
 	{
 		outputInventory();
 		std::cin.clear();
+	}
+	else if (quit.foundWords() == true)
+	{
+		output("Do you really wanna quit the game? Yes[1] No[2]"); newLine(2);
+		int choice = userChoiceNumbered(2);
+		if (choice == 1)
+		{
+			exit(EXIT_SUCCESS);
+		}
 	}
 	else {
 		color("You can't do that!\n", "dred");
@@ -203,6 +213,10 @@ void lookFor()
 		{
 			if (instance == words) drink.foundWords(true);
 		}
+		for (std::string instance : quit.getKeywords())
+		{
+			if (instance == words) quit.foundWords(true);
+		}
 #pragma endregion
 		// specific words
 		for (std::string instance : k_tv.getKeywords())
@@ -256,16 +270,16 @@ void setTextspeed()
 	switch (textspeed)
 	{
 	case 0:
-		textspeed = 80;
+		defaultTextSpeed = 80;
 		color("You are now using the slow text speed.\n", "grey");
 		break;
 	case 1:
-		textspeed = 50;
+		defaultTextSpeed = 50;
 		color("You are now using the default text speed.\n", "grey");
 		break;
 	case 2:
-		textspeed = 30;
-		color("ZOOOOOOOM.\n", "yellow");
+		defaultTextSpeed = 20;
+		color("ZOOOOOOOOOOOOOOOOOOOOOM.\n", "yellow");
 		break;
 	default:
 		color("Wrong input!\n", "dred");
@@ -387,6 +401,7 @@ void clear()
 	pickUp.foundWords(false);
 	turnOn.foundWords(false);
 	drink.foundWords(false);
+	quit.foundWords(false);
 
 	// specific
 	k_tv.foundWords(false);

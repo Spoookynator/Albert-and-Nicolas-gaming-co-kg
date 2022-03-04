@@ -6,7 +6,7 @@
 #define DEBUG
 
 // DONT COMMENT OUT FOR RELEASE
-//#define TEXTPAUSE
+#define TEXTPAUSE
 
 #ifdef DEBUG
 #define LOG(x) std::cout <<  x << std::endl;
