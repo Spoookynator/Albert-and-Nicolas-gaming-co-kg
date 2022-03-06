@@ -51,7 +51,6 @@ void titleScreen()
 
 			if (choice2 == 1)
 			{
-				currentScene = 1;
 				SAVE();
 				s(2000);
 				system("cls");
