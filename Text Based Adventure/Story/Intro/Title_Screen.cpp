@@ -4,6 +4,7 @@
 #include "..\..\userInput.h"
 #include "..\..\variables.h"
 #include "..\..\save.h"
+#include "..\..\coloredText.h"
 
 void titleScreen()
 {
@@ -17,7 +18,7 @@ void titleScreen()
 		newLine(8, 0);
 		output("                        ___       _,.---._      ,--.-.,-.      _,.---._      ,--.-.,-.      _,.---._     ", 0); newLine(1, 1);
 		output("                 .-._ .'=.'\\    ,-.' , -  `.   /==/- |\\  \\   ,-.' , -  `.   /==/- |\\  \\   ,-.' , -  `.   ", 0); newLine(1, 1);
-		output("                /==/ \\==|  |  /==/_,  ,  -  \\  |==|_ `/_ /  /==/_,  ,  - \\  |==|_ `/_ /  /==/_,  ,  - \\  ", 0); newLine(1, 1);
+		output("                /==/ \\==|  |   /==/_,  ,  - \\  |==|_ `/_ /  /==/_,  ,  - \\  |==|_ `/_ /  /==/_,  ,  - \\  ", 0); newLine(1, 1);
 		output("                |==|,|  / - | |==|   .=.     | |==| ,   /  |==|   .=.     | |==| ,   /  |==|   .=.     | ", 0); newLine(1, 1);
 		output("                |==|  \\/  , | |==|_ : ;=:  - | |==|-  .|   |==|_ : ;=:  - | |==|-  .|   |==|_ : ;=:  - | ", 0); newLine(1, 1);
 		output("                |==|- ,   _ | |==| , '='     | |==| _ , \\  |==| , '='     | |==| _ , \\  |==| , '='     | ", 0); newLine(1, 1);
@@ -51,6 +52,12 @@ void titleScreen()
 			if (choice2 == 1)
 			{
 				SAVE();
+				s(2000);
+				system("cls");
+				currentScene = 1;
+				newLine(10);
+				output("At certain points in the game, your inputs are required. You can "); color("interact", "cyan"); output(" with certain "); color("objects", "yellow"); output(".\n");
+				output("Use the keywords "); color(">>look at<<", "cyan"); output(" to take a look at objects or "); color(">>interact<<", "cyan"); output(" to interact with objects. \nSome objects may have multiple ways to interact with them.");
 				s(2000);
 				system("cls");
 			}
