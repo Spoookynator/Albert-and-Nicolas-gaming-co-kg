@@ -51,6 +51,7 @@ void titleScreen()
 
 			if (choice2 == 1)
 			{
+				currentScene = 1;
 				SAVE();
 				s(2000);
 				system("cls");
@@ -65,6 +66,7 @@ void titleScreen()
 			{
 				menuChoice = 4;
 			}
+
 		}
 		else if (menuChoice == 3)
 		{
