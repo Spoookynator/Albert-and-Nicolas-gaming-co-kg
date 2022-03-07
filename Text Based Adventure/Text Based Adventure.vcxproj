@@ -165,6 +165,7 @@
     <ClInclude Include="debugLog.h" />
     <ClInclude Include="dialogue.h" />
     <ClInclude Include="endingPoints.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Story\Intro\Title_Screen.h" />
     <ClInclude Include="variables.h" />
     <ClInclude Include="init.h" />

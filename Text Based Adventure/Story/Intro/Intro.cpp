@@ -51,7 +51,6 @@ void intro()
 		output("Maybe you should "); color("turn it on", "cyan"); output(" and see whats on the news!"); newLine(2, 0);
 
 		// stops until user TURNS ON the TV or INTERACTS with it
-		fillLine('>', 1);
 		while (tv.getInteracted() == false)
 		{
 			userComandInterface();
@@ -85,7 +84,6 @@ void intro()
 
 		output("Your vision starts to get blurry. You desperatly want to slurp all of the water in hope, \nthat it will make you feel better."); newLine(2);
 
-		fillLine('>', 1);
 		while (waterbottle.getInteracted() == false)
 		{
 			userComandInterface();
