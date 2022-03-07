@@ -57,9 +57,11 @@ void cellarIntro()
 		} while (choice == 2);
 		
 		if (iteration > 3) output("Thank God. You finally decide to flip the switch. I thought you were going to die in here..."); newLine(2);
-		output("You flip the switch, expecting to finally see an explosion of light brighten up the room. ");
+		output("You flip the switch, expecting to finally see an explosion of light brighten up the room...");
 		newLine(2);
 
+		output("End of demo");
+		/*
 		while (gascanister.getInteracted() == false)
 		{
 			userComandInterface();
@@ -69,32 +71,14 @@ void cellarIntro()
 				radio.setInteracted(false);
 			}
 		}
-	}
-	else if (currentScene == 4)
-	{
-		// object transfer
-		door.setScene(4);
-
-		gascanister.setScene(4);
 		gascanister.setDescription("It's empty now.");
 		gascanister.setInteracted("You turn the empty canister around and shake it vigorously. The last remainign drops get flung out of the contanier.");
-
-		radio.setScene(4);
-
-		// when key is found
 
 		while (door.getInteracted() == false)
 		{
 			userComandInterface();
 		}
 		output("After quickly peeking ahead, you proceed through the door.");
-	}
-	else if (currentScene == 5)
-	{
-		while (true)
-		{
-		userComandInterface();
-
-		}
+		*/
 	}
 }

@@ -62,7 +62,7 @@ void LOAD()
 	loadChoices(FILE_STRING);
 	loadScene(FILE_LINE_TWO);
 	loadPoints(FILE_LINE_TREE);
-	loadPoints(FILE_LINE_FOUR);
+	loadDefaultTextSpeed(FILE_LINE_FOUR);
 
 
 	std::cout << "Save file successfully loaded!" << std::endl;
