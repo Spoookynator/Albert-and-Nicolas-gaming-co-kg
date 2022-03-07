@@ -176,6 +176,12 @@
     <ClInclude Include="Story\Main Part\Cellar\Shared Path\Cellar_Intro.h" />
     <ClInclude Include="userInput.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Text Based Adventure.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\hnet.com-image.ico" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
