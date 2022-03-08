@@ -7,7 +7,7 @@ Object tv(1, "TV", "It's your old TV. Looks like it can be turned on", false, "Y
 Keyword k_tv(false, { "television", "television,", "television.", "television!", "television?", "tv", "tv,", "tv.", "tv!", "tv?" });
 
 //scene 2
-Object waterbottle(2, "Water bottle", "Your favourite water bottle.The water looks so juicy right now. \nYour thoughts fill with the urge to drink from it.", false, "You start jugging the water like crazy, gobbling down all of it as fast as you can.");
+Object waterbottle(2, "Water bottle", "Your favourite water bottle. The water looks so juicy right now.\nYour thoughts fill with the urge to drink from it.", false, "You start jugging the water like crazy, gobbling down all of it as fast as you can.");
 Keyword k_waterbottle(false, { "waterbottle", "waterbottle,", "waterbottle.", "waterbottle!", "waterbottle?", "bottle", "bottle,", "bottle.", "bottle!", "bottle?" });
 
 void intro()
@@ -90,7 +90,7 @@ void intro()
 		}
 		newLine();
 	
-		output("You feel refreshed. But only for a brief moment.\nYou start to flounder, slowly loosing more of your consciousness until you start to tumble, \nstubbing your toe on your desk in the process and falling to the ground"); newLine(2);
+		output("You feel refreshed. But only for a brief moment.\nYou start to flounder, slowly loosing more of your consciousness until you start to tumble,\nstubbing your toe on your desk in the process and falling to the ground"); newLine(2);
 		output("Then everything goes black...", 300); newLine(2);
 
 		currentScene = 3;

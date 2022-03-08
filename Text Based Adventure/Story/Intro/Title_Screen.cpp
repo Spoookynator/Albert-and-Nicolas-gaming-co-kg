@@ -57,8 +57,10 @@ void titleScreen()
 				currentScene = 1;
 				newLine(10);
 				output("At certain points in the game, your inputs are required. You can "); color("interact", "cyan"); output(" with certain "); color("objects", "yellow"); output(".\n");
-				output("Use the keywords "); color(">>look at<<", "cyan"); output(" to take a look at objects or "); color(">>interact<<", "cyan"); output(" to interact with objects. \nSome objects may have multiple ways to interact with them.");
-				s(2000);
+				output("Use the keywords "); color(">>look at<<", "cyan"); output(" to take a look at "); color("objects", "yellow"); output(" or"); color(" >>interact<< ", "cyan"); output("to interact with ");  color("objects", "yellow"); output(".");  newLine(2);
+				output("Some objects may have multiple ways to interact with them."); newLine(2);
+				output("Press enter to continue...");
+				std::cin.get();
 				system("cls");
 			}
 			else
